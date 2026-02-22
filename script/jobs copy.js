@@ -24,6 +24,7 @@ let rejected = [];
 document.getElementById('all-jobs').addEventListener('click', function (e) {
   if (e.target.classList.contains('interview-btn')) {
     const parentDiv = e.target.parentNode.parentNode;
+    console.log(parentDiv);
     let name = parentDiv.children[0].children[0].innerText;
     let title = parentDiv.children[0].children[1].innerText;
     let salary = parentDiv.children[1].children[0].innerText;
@@ -100,19 +101,6 @@ document.getElementById('all-jobs').addEventListener('click', function (e) {
     rejectedCard(cardInfo);
   }
 });
-
-document
-  .getElementById('interview-jobs')
-  .addEventListener('click', function (e) {
-    if (e.target.classList.contains('rejected-btn')) {
-      const parentDiv = e.target.closest('.card');
-      parentDiv.remove()
-      const allInterviewCard = interview.filter(
-        (card) => card.statusAfter !== e.target.innerText
-      );
-      
-    }
-  });
 
 function interviewCard(info) {
   const interviewId = document.getElementById('interview-card');
