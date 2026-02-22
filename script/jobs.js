@@ -106,11 +106,53 @@ document
   .addEventListener('click', function (e) {
     if (e.target.classList.contains('rejected-btn')) {
       const parentDiv = e.target.closest('.card');
-      parentDiv.remove()
-      const allInterviewCard = interview.filter(
-        (card) => card.statusAfter !== e.target.innerText
-      );
-      
+      if (!parentDiv) return;
+      parentDiv.remove();
+
+      interview = interview.filter((card) => card.statusAfter !== 'interview');
+
+      const cardInfo = {
+        name: parentDiv.querySelector('h2').innerText,
+        title: parentDiv.querySelector('p').innerText,
+        salary: parentDiv.querySelector('div:nth-child(2) p').innerText,
+        jobDisc: parentDiv.querySelector('div:nth-child(3) p').innerText,
+        statusAfter: 'rejected',
+        statusButtonClx: 'btn bg-red-400',
+        buttonPressClx: 'rejected-btn btn border-2 border-red-400 text-red-400',
+      };
+      rejected.push(cardInfo);
+      rejectedCard(cardInfo);
+      // counter update
+      allInterviewJobs.innerText = interview.length;
+      allRejectedJobs.innerText = rejected.length;
+    }
+  });
+
+document
+  .getElementById('rejected-jobs')
+  .addEventListener('click', function (e) {
+    if (e.target.classList.contains('interview-btn')) {
+      const parentDiv = e.target.closest('.card');
+      if (!parentDiv) return;
+      parentDiv.remove();
+
+      rejected = rejected.filter((card) => card.statusAfter !== 'rejected');
+
+      const cardInfo = {
+        name: parentDiv.querySelector('h2').innerText,
+        title: parentDiv.querySelector('p').innerText,
+        salary: parentDiv.querySelector('div:nth-child(2) p').innerText,
+        jobDisc: parentDiv.querySelector('div:nth-child(3) p').innerText,
+        statusAfter: 'interview',
+        statusButtonClx: 'btn bg-green-400',
+        buttonPressClx:
+          'interview-btn btn border-2 border-green-400 text-green-400',
+      };
+      interview.push(cardInfo);
+      interviewCard(cardInfo);
+      // counter update
+      allInterviewJobs.innerText = interview.length;
+      allRejectedJobs.innerText = rejected.length;
     }
   });
 
