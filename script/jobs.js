@@ -227,7 +227,7 @@ function interviewCard(info) {
             </div>
             <div class="right">
               <div class="">
-                <button class="btn rounded-full p-2">
+                <button class="delete-btn btn rounded-full p-2">
                   <i class="fa-regular fa-trash-can"></i>
                 </button>
               </div>
@@ -267,7 +267,7 @@ function rejectedCard(info) {
             </div>
             <div class="right">
               <div class="">
-                <button class="btn rounded-full p-2">
+                <button class="delete-btn btn rounded-full p-2">
                   <i class="fa-regular fa-trash-can"></i>
                 </button>
               </div>
@@ -275,3 +275,121 @@ function rejectedCard(info) {
   `;
   interviewId.appendChild(div);
 }
+
+
+// interview jobs for delete button
+document
+  .getElementById('interview-jobs')
+  .addEventListener('click', function (e) {
+    
+    const btn = e.target.closest('.delete-btn');
+    if (!btn) return;
+
+    const parentDiv = btn.closest('.card');
+    if (!parentDiv) return;
+
+   
+    const name = parentDiv.querySelector('h2')?.innerText.trim();
+    const title = parentDiv.querySelector('p')?.innerText.trim();
+
+    
+    parentDiv.remove();
+
+    const interviewCardContainer = document.getElementById('interview-card');
+    const allInterviewJobs = document.getElementById('total-interview');
+    allInterviewJobs.innerText = interviewCardContainer.children.length;
+
+    
+    const totalJobs = document.getElementById('all-card');
+    const allJobs = document.getElementById('total');
+    allJobs.innerText = totalJobs.children.length;
+
+    // Update main card status to 'Not Applied'
+    const mainCard = Array.from(totalJobs.children).find((card) => {
+      const cName = card.querySelector('h2').innerText.trim();
+      const cTitle = card.querySelector('p').innerText.trim();
+      return cName === name && cTitle === title;
+    });
+
+    if (mainCard) {
+      const statusBtn = mainCard.querySelector('div:nth-child(3) button');
+      if (statusBtn) {
+        statusBtn.innerText = 'Not Applied';
+        statusBtn.className = 'btn bg-gray-300 text-black';
+      }
+    }
+
+   
+    interview = interview.filter(
+      (card) => !(card.name === name && card.title === title)
+    );
+
+    
+    rejected = rejected.filter(
+      (card) => !(card.name === name && card.title === title)
+    );
+
+   
+    allInterviewJobs.innerText = interview.length;
+    const allRejectedJobs = document.getElementById('total-rejected');
+    allRejectedJobs.innerText = rejected.length;
+  });
+
+
+  // rejected jobs for delete button
+document
+  .getElementById('rejected-jobs')
+  .addEventListener('click', function (e) {
+    
+    const btn = e.target.closest('.delete-btn');
+    if (!btn) return;
+
+    const parentDiv = btn.closest('.card');
+    if (!parentDiv) return;
+
+   
+    const name = parentDiv.querySelector('h2')?.innerText.trim();
+    const title = parentDiv.querySelector('p')?.innerText.trim();
+
+    
+    parentDiv.remove();
+
+    const interviewCardContainer = document.getElementById('rejected-card');
+    const allInterviewJobs = document.getElementById('total-rejected');
+    allInterviewJobs.innerText = interviewCardContainer.children.length;
+
+    
+    const totalJobs = document.getElementById('all-card');
+    const allJobs = document.getElementById('total');
+    allJobs.innerText = totalJobs.children.length;
+
+    // Update main card status to 'Not Applied'
+    const mainCard = Array.from(totalJobs.children).find((card) => {
+      const cName = card.querySelector('h2').innerText.trim();
+      const cTitle = card.querySelector('p').innerText.trim();
+      return cName === name && cTitle === title;
+    });
+
+    if (mainCard) {
+      const statusBtn = mainCard.querySelector('div:nth-child(3) button');
+      if (statusBtn) {
+        statusBtn.innerText = 'Not Applied';
+        statusBtn.className = 'btn bg-gray-300 text-black';
+      }
+    }
+
+   
+    interview = interview.filter(
+      (card) => !(card.name === name && card.title === title)
+    );
+
+    
+    rejected = rejected.filter(
+      (card) => !(card.name === name && card.title === title)
+    );
+
+   
+    allInterviewJobs.innerText = interview.length;
+    const allRejectedJobs = document.getElementById('total-rejected');
+    allRejectedJobs.innerText = rejected.length;
+  });
