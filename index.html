@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>B13-A04-Saddam</title>
+    <!-- tailwind + daisyUI -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- font awesome cdn -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- css -->
+    <style>
+      * {
+        font-family: "Geist", sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-base-200">
+    <section id="job-tracker" class="">
+      <div class="container mx-auto pt-16">
+        <h1 class="text-4xl font-bold">Job Application Tracker</h1>
+        <div class="card-box grid grid-cols-3 gap-5 my-5">
+          <div class="card bg-white p-4">
+            <p>Total</p>
+            <h3 id="total" class="font-bold text-2xl">0</h3>
+          </div>
+          <div class="card bg-white p-4">
+            <p>Interview</p>
+            <h3 id="total-interview" class="text-green-400 font-bold text-2xl">
+              0
+            </h3>
+          </div>
+          <div class="card bg-white p-4">
+            <p>Rejected</p>
+            <h3 id="total-rejected" class="text-red-500 font-bold text-2xl">
+              0
+            </h3>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- all cards -->
+    <section id="all-jobs" class="">
+      <div class="container mx-auto">
+        <h2 class="text-3xl font-bold">Available Jobs</h2>
+        <div class="selected-btn mt-4 flex gap-5">
+          <button
+            id="all-btn"
+            onclick="handleMenu(this, 'all-card')"
+            class="btn-com btn bg-blue-500 text-white"
+          >
+            All
+          </button>
+          <button
+            id="interview-btn"
+            onclick="handleMenu(this, 'interview-card')"
+            class="btn-com btn"
+          >
+            Interview
+          </button>
+          <button
+            id="rejected-btn"
+            onclick="handleMenu(this, 'rejected-card')"
+            class="btn-com btn"
+          >
+            Rejected
+          </button>
+        </div>
+        <div id="all-card" class="card-box mt-4 flex flex-col gap-6">
+          <div class="card flex flex-row justify-between bg-white p-6">
+            <div class="left space-y-6">
+              <div class="space-y-2">
+                <h2 class="text-2xl font-bold">Mobile First Corp</h2>
+                <p>React Native Developer</p>
+              </div>
+              <div>
+                <p>React Native Developer</p>
+              </div>
+              <div class="space-y-2">
+                <button class="btn">Not Applied</button>
+                <p>
+                  Build cross-platform mobile applications using React Native.
+                  Work on products used by millions of users worldwide.
+                </p>
+              </div>
+              <div class="flex gap-5">
+                <button class="btn border-2 border-green-400 text-green-400">
+                  interview
+                </button>
+                <button class="btn border-2 border-red-400 text-red-400">
+                  Rejected
+                </button>
+              </div>
+            </div>
+            <div class="right">
+              <div class="">
+                <button class="btn rounded-full p-2">
+                  <i class="fa-regular fa-trash-can"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="card flex flex-row justify-between bg-white p-6">
+            <div class="left space-y-6">
+              <div class="space-y-2">
+                <h2 class="text-2xl font-bold">Mobile First Corp</h2>
+                <p>React Native Developer</p>
+              </div>
+              <div>
+                <p>React Native Developer</p>
+              </div>
+              <div class="space-y-2">
+                <button class="btn">Not Applied</button>
+                <p>
+                  Build cross-platform mobile applications using React Native.
+                  Work on products used by millions of users worldwide.
+                </p>
+              </div>
+              <div class="flex gap-5">
+                <button class="btn border-2 border-green-400 text-green-400">
+                  interview
+                </button>
+                <button class="btn border-2 border-red-400 text-red-400">
+                  Rejected
+                </button>
+              </div>
+            </div>
+            <div class="right">
+              <div class="">
+                <button class="btn rounded-full p-2">
+                  <i class="fa-regular fa-trash-can"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="card flex flex-row justify-between bg-white p-6">
+            <div class="left space-y-6">
+              <div class="space-y-2">
+                <h2 class="text-2xl font-bold">Mobile First Corp</h2>
+                <p>React Native Developer</p>
+              </div>
+              <div>
+                <p>React Native Developer</p>
+              </div>
+              <div class="space-y-2">
+                <button class="btn">Not Applied</button>
+                <p>
+                  Build cross-platform mobile applications using React Native.
+                  Work on products used by millions of users worldwide.
+                </p>
+              </div>
+              <div class="flex gap-5">
+                <button class="btn border-2 border-green-400 text-green-400">
+                  interview
+                </button>
+                <button class="btn border-2 border-red-400 text-red-400">
+                  Rejected
+                </button>
+              </div>
+            </div>
+            <div class="right">
+              <div class="">
+                <button class="btn rounded-full p-2">
+                  <i class="fa-regular fa-trash-can"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="card flex flex-row justify-between bg-white p-6">
+            <div class="left space-y-6">
+              <div class="space-y-2">
+                <h2 class="text-2xl font-bold">Mobile First Corp</h2>
+                <p>React Native Developer</p>
+              </div>
+              <div>
+                <p>React Native Developer</p>
+              </div>
+              <div class="space-y-2">
+                <button class="btn">Not Applied</button>
+                <p>
+                  Build cross-platform mobile applications using React Native.
+                  Work on products used by millions of users worldwide.
+                </p>
+              </div>
+              <div class="flex gap-5">
+                <button class="btn border-2 border-green-400 text-green-400">
+                  interview
+                </button>
+                <button class="btn border-2 border-red-400 text-red-400">
+                  Rejected
+                </button>
+              </div>
+            </div>
+            <div class="right">
+              <div class="">
+                <button class="btn rounded-full p-2">
+                  <i class="fa-regular fa-trash-can"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="card flex flex-row justify-between bg-white p-6">
+            <div class="left space-y-6">
+              <div class="space-y-2">
+                <h2 class="text-2xl font-bold">Mobile First Corp</h2>
+                <p>React Native Developer</p>
+              </div>
+              <div>
+                <p>React Native Developer</p>
+              </div>
+              <div class="space-y-2">
+                <button class="btn">Not Applied</button>
+                <p>
+                  Build cross-platform mobile applications using React Native.
+                  Work on products used by millions of users worldwide.
+                </p>
+              </div>
+              <div class="flex gap-5">
+                <button class="btn border-2 border-green-400 text-green-400">
+                  interview
+                </button>
+                <button class="btn border-2 border-red-400 text-red-400">
+                  Rejected
+                </button>
+              </div>
+            </div>
+            <div class="right">
+              <div class="">
+                <button class="btn rounded-full p-2">
+                  <i class="fa-regular fa-trash-can"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="card flex flex-row justify-between bg-white p-6">
+            <div class="left space-y-6">
+              <div class="space-y-2">
+                <h2 class="text-2xl font-bold">Mobile First Corp</h2>
+                <p>React Native Developer</p>
+              </div>
+              <div>
+                <p>React Native Developer</p>
+              </div>
+              <div class="space-y-2">
+                <button class="btn">Not Applied</button>
+                <p>
+                  Build cross-platform mobile applications using React Native.
+                  Work on products used by millions of users worldwide.
+                </p>
+              </div>
+              <div class="flex gap-5">
+                <button class="btn border-2 border-green-400 text-green-400">
+                  interview
+                </button>
+                <button class="btn border-2 border-red-400 text-red-400">
+                  Rejected
+                </button>
+              </div>
+            </div>
+            <div class="right">
+              <div class="">
+                <button class="btn rounded-full p-2">
+                  <i class="fa-regular fa-trash-can"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="card flex flex-row justify-between bg-white p-6">
+            <div class="left space-y-6">
+              <div class="space-y-2">
+                <h2 class="text-2xl font-bold">Mobile First Corp</h2>
+                <p>React Native Developer</p>
+              </div>
+              <div>
+                <p>React Native Developer</p>
+              </div>
+              <div class="space-y-2">
+                <button class="btn">Not Applied</button>
+                <p>
+                  Build cross-platform mobile applications using React Native.
+                  Work on products used by millions of users worldwide.
+                </p>
+              </div>
+              <div class="flex gap-5">
+                <button class="btn border-2 border-green-400 text-green-400">
+                  interview
+                </button>
+                <button class="btn border-2 border-red-400 text-red-400">
+                  Rejected
+                </button>
+              </div>
+            </div>
+            <div class="right">
+              <div class="">
+                <button class="btn rounded-full p-2">
+                  <i class="fa-regular fa-trash-can"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- interview cards -->
+    <section id="interview-jobs" class="hidden">
+      <div class="container mx-auto">
+        <div
+          id="interview-card"
+          class="card-box mt-4 flex flex-col gap-6"
+        ></div>
+      </div>
+    </section>
+    <!-- rejected cards -->
+    <section id="rejected-jobs" class="hidden">
+      <div class="container mx-auto">
+        <div id="rejected-card" class="card-box mt-4 flex flex-col gap-6"></div>
+      </div>
+    </section>
+    <script src="./script/helpers.js"></script>
+    <script src="./script/jobs.js"></script>
+  </body>
+</html>
