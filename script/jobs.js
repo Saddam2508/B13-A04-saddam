@@ -1,64 +1,138 @@
-const allJobs = document.getElementById("total");
-const allInterviewJobs = document.getElementById("total-interview");
-const allRejectedJobs = document.getElementById("total-rejected");
+// job trucker
+const allJobs = document.getElementById('total');
+const allInterviewJobs = document.getElementById('total-interview');
+const allRejectedJobs = document.getElementById('total-rejected');
 
-const totalJobs = document.getElementById("all-card");
-const totalInterviewJobs = document.getElementById("interview-card");
-const totalRejectedJobs = document.getElementById("rejected-card");
+const totalJobs = document.getElementById('all-card');
+const totalInterviewJobs = document.getElementById('interview-card');
+const totalRejectedJobs = document.getElementById('rejected-card');
 
 allJobs.innerText = totalJobs.children.length;
 allInterviewJobs.innerText = totalInterviewJobs.children.length;
 allRejectedJobs.innerText = totalRejectedJobs.children.length;
 
+// all button, all interview btn and all rejected btn
 function handleMenu(element, id) {
-  const buttons = document.querySelector(".selected-btn");
+  const buttons = document.querySelector('.selected-btn');
   Array.from(buttons.children).forEach((button) => {
-    button.classList.remove("bg-blue-500", "text-white");
+    button.classList.remove('bg-blue-500', 'text-white');
   });
-  element.classList.add("bg-blue-500", "text-black");
+  element.classList.add('bg-blue-500', 'text-black');
   showOnly(id);
 }
 
-// document.getElementById("all-jobs").addEventListener("click", function (e) {
-//   console.dir(e.target);
-//   let interview = [];
-//   let rejected = [];
+//interview btn
 
-//   if (e.target.classList.contains("btn-com")) {
-//     const buttons = document.querySelector(".selected-btn");
-//     Array.from(buttons.children).forEach((button) => {
-//       button.classList.remove("bg-blue-500", "text-white");
-//     });
+document.getElementById('all-jobs').addEventListener('click', function (e) {
+  let interview = [];
+  let rejected = [];
 
-//     const selectedBtn = e.target;
-//     selectedBtn.classList.add("bg-blue-500", "text-black");
+  if (e.target.classList.contains('interview-btn')) {
+    const parentDiv = e.target.parentNode.parentNode;
+    console.log(parentDiv);
+    let name = parentDiv.children[0].children[0].innerText;
+    let title = parentDiv.children[0].children[1].innerText;
+    let salary = parentDiv.children[1].children[0].innerText;
+    let jobDisc = parentDiv.children[2].children[1].innerText;
+    let buttonPress = e.target.innerText;
 
-//     showOnly(selectedBtn.id);
-//     if (selectedBtn) {
-//       interviewCard();
-//     }
-//   }
+    if (buttonPress.toLowerCase() === 'interview') {
+      parentDiv.children[2].children[0].innerText = buttonPress;
+      parentDiv.children[2].children[0].className = 'btn bg-green-400';
+    }
 
-// });
+    let status = parentDiv.children[2].children[0].innerText;
 
-function interviewCard() {
-  const interviewId = document.getElementById("interview-card");
-  const div = document.createElement("div");
-  div.className = "card flex flex-row justify-between bg-white p-6";
+    const cardInfo = {
+      name,
+      title,
+      salary,
+      status,
+      jobDisc,
+    };
+    interview.push(cardInfo);
+    interviewCard(cardInfo);
+  }
+  if (e.target.classList.contains('rejected-btn')) {
+    const parentDiv = e.target.parentNode.parentNode;
+    console.log(parentDiv);
+    let name = parentDiv.children[0].children[0].innerText;
+    let title = parentDiv.children[0].children[1].innerText;
+    let salary = parentDiv.children[1].children[0].innerText;
+    let jobDisc = parentDiv.children[2].children[1].innerText;
+    let buttonPress = e.target.innerText;
+
+    if (buttonPress.toLowerCase() === 'rejected') {
+      parentDiv.children[2].children[0].innerText = buttonPress;
+      parentDiv.children[2].children[0].className = 'btn bg-red-400';
+    }
+    let status = parentDiv.children[2].children[0].innerText;
+
+    const cardInfo = { name, title, salary, status, jobDisc };
+    rejected.push(cardInfo);
+    rejectedCard(cardInfo);
+  }
+});
+
+function interviewCard(info) {
+  const interviewId = document.getElementById('interview-card');
+  const div = document.createElement('div');
+  div.className = 'card flex flex-row justify-between bg-white p-6';
   div.innerHTML = `
    <div class="left space-y-6">
               <div class="space-y-2">
-                <h2 class="text-2xl font-bold">Mobile First Corp</h2>
-                <p>React Native Developer</p>
+                <h2 class="text-2xl font-bold">${info.name}</h2>
+                <p>
+                ${info.title}
+                </p>
               </div>
               <div>
-                <p>React Native Developer</p>
+                <p>${info.salary}</p>
               </div>
               <div class="space-y-2">
-                <button class="btn">Not Applied</button>
+                <button class="btn">${info.status}</button>
                 <p>
-                  Build cross-platform mobile applications using React Native.
-                  Work on products used by millions of users worldwide.
+                  ${info.jobDisc}
+                </p>
+              </div>
+              <div class="flex gap-5">
+                <button class="btn border-2 border-green-400 text-green-400">
+                  interview
+                </button>
+                <button class="btn border-2 border-red-400 text-red-400">
+                  Rejected
+                </button>
+              </div>
+            </div>
+            <div class="right">
+              <div class="">
+                <button class="btn rounded-full p-2">
+                  <i class="fa-regular fa-trash-can"></i>
+                </button>
+              </div>
+            </div>
+  `;
+  interviewId.appendChild(div);
+}
+function rejectedCard(info) {
+  const interviewId = document.getElementById('rejected-card');
+  const div = document.createElement('div');
+  div.className = 'card flex flex-row justify-between bg-white p-6';
+  div.innerHTML = `
+   <div class="left space-y-6">
+              <div class="space-y-2">
+                <h2 class="text-2xl font-bold">${info.name}</h2>
+                <p>
+                ${info.title}
+                </p>
+              </div>
+              <div>
+                <p>${info.salary}</p>
+              </div>
+              <div class="space-y-2">
+                <button class="btn">${info.status}</button>
+                <p>
+                  ${info.jobDisc}
                 </p>
               </div>
               <div class="flex gap-5">
