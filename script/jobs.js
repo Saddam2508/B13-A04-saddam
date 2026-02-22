@@ -4,12 +4,8 @@ const allInterviewJobs = document.getElementById('total-interview');
 const allRejectedJobs = document.getElementById('total-rejected');
 
 const totalJobs = document.getElementById('all-card');
-const totalInterviewJobs = document.getElementById('interview-card');
-const totalRejectedJobs = document.getElementById('rejected-card');
 
 allJobs.innerText = totalJobs.children.length;
-allInterviewJobs.innerText = totalInterviewJobs.children.length;
-allRejectedJobs.innerText = totalRejectedJobs.children.length;
 
 // all button, all interview btn and all rejected btn
 function handleMenu(element, id) {
@@ -22,11 +18,10 @@ function handleMenu(element, id) {
 }
 
 //interview btn
+let interview = [];
+let rejected = [];
 
 document.getElementById('all-jobs').addEventListener('click', function (e) {
-  let interview = [];
-  let rejected = [];
-
   if (e.target.classList.contains('interview-btn')) {
     const parentDiv = e.target.parentNode.parentNode;
     console.log(parentDiv);
@@ -34,23 +29,36 @@ document.getElementById('all-jobs').addEventListener('click', function (e) {
     let title = parentDiv.children[0].children[1].innerText;
     let salary = parentDiv.children[1].children[0].innerText;
     let jobDisc = parentDiv.children[2].children[1].innerText;
-    let buttonPress = e.target.innerText;
+    let buttonPress = e.target.innerText.trim();
+    let statusBefore = parentDiv.children[2].children[0].innerText
+      .trim()
+      .toLowerCase();
 
-    if (buttonPress.toLowerCase() === 'interview') {
-      parentDiv.children[2].children[0].innerText = buttonPress;
-      parentDiv.children[2].children[0].className = 'btn bg-green-400';
+    if (statusBefore === 'interview') {
+      alert('Already selected');
+      return;
+    } else {
+      if (buttonPress.toLowerCase() === 'interview') {
+        parentDiv.children[2].children[0].innerText = buttonPress;
+        parentDiv.children[2].children[0].className = 'btn bg-green-400';
+      }
     }
 
-    let status = parentDiv.children[2].children[0].innerText;
+    let buttonPressClx = e.target.className;
 
+    let statusAfter = parentDiv.children[2].children[0].innerText;
+    let statusButtonClx = parentDiv.children[2].children[0].className;
     const cardInfo = {
       name,
       title,
       salary,
-      status,
+      statusAfter,
       jobDisc,
+      statusButtonClx,
+      buttonPressClx,
     };
     interview.push(cardInfo);
+    allInterviewJobs.innerText = interview.length;
     interviewCard(cardInfo);
   }
   if (e.target.classList.contains('rejected-btn')) {
@@ -60,16 +68,36 @@ document.getElementById('all-jobs').addEventListener('click', function (e) {
     let title = parentDiv.children[0].children[1].innerText;
     let salary = parentDiv.children[1].children[0].innerText;
     let jobDisc = parentDiv.children[2].children[1].innerText;
-    let buttonPress = e.target.innerText;
+    let buttonPress = e.target.innerText.trim();
+    let statusBefore = parentDiv.children[2].children[0].innerText
+      .trim()
+      .toLowerCase();
 
-    if (buttonPress.toLowerCase() === 'rejected') {
-      parentDiv.children[2].children[0].innerText = buttonPress;
-      parentDiv.children[2].children[0].className = 'btn bg-red-400';
+    if (statusBefore === 'rejected') {
+      alert('Already selected');
+      return;
+    } else {
+      if (buttonPress.toLowerCase() === 'rejected') {
+        parentDiv.children[2].children[0].innerText = buttonPress;
+        parentDiv.children[2].children[0].className = 'btn bg-red-400';
+      }
     }
-    let status = parentDiv.children[2].children[0].innerText;
 
-    const cardInfo = { name, title, salary, status, jobDisc };
+    let buttonPressClx = e.target.className;
+
+    let statusAfter = parentDiv.children[2].children[0].innerText;
+    let statusButtonClx = parentDiv.children[2].children[0].className;
+    const cardInfo = {
+      name,
+      title,
+      salary,
+      statusAfter,
+      jobDisc,
+      statusButtonClx,
+      buttonPressClx,
+    };
     rejected.push(cardInfo);
+    allRejectedJobs.innerText = rejected.length;
     rejectedCard(cardInfo);
   }
 });
@@ -90,13 +118,13 @@ function interviewCard(info) {
                 <p>${info.salary}</p>
               </div>
               <div class="space-y-2">
-                <button class="btn">${info.status}</button>
+                <button class="${info.statusButtonClx}">${info.statusAfter}</button>
                 <p>
                   ${info.jobDisc}
                 </p>
               </div>
               <div class="flex gap-5">
-                <button class="btn border-2 border-green-400 text-green-400">
+                <button class="${info.buttonPressClx}">
                   interview
                 </button>
                 <button class="btn border-2 border-red-400 text-red-400">
@@ -130,7 +158,7 @@ function rejectedCard(info) {
                 <p>${info.salary}</p>
               </div>
               <div class="space-y-2">
-                <button class="btn">${info.status}</button>
+                <button class="${info.statusButtonClx}">${info.statusAfter}</button>
                 <p>
                   ${info.jobDisc}
                 </p>
@@ -139,7 +167,7 @@ function rejectedCard(info) {
                 <button class="btn border-2 border-green-400 text-green-400">
                   interview
                 </button>
-                <button class="btn border-2 border-red-400 text-red-400">
+                <button class="${info.buttonPressClx}">
                   Rejected
                 </button>
               </div>
