@@ -34,7 +34,7 @@
     <!-- css -->
     <style>
       * {
-        font-family: 'Geist', sans-serif;
+        font-family: "Geist", sans-serif;
       }
     </style>
   </head>
@@ -402,19 +402,41 @@
     <!-- interview cards -->
     <section id="interview-jobs" class="hidden">
       <div class="container mx-auto">
-        <div
-          id="interview-card"
-          class="card-box mt-4 flex flex-col gap-6"
-        ></div>
+        <div id="interview-card" class="card-box mt-4 flex flex-col gap-6">
+          <div class="hidden no-card">
+            <div
+              class="no-card flex flex-col justify-between items-center bg-white p-6"
+            >
+              <div>
+                <img src="./assets/assignment_7959593.png" alt="" />
+              </div>
+              <h2 class="text-2xl font-bold">No jobs available</h2>
+              <p>Check back soon for new job opportunities</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
     <!-- rejected cards -->
     <section id="rejected-jobs" class="hidden">
       <div class="container mx-auto">
-        <div id="rejected-card" class="card-box mt-4 flex flex-col gap-6"></div>
+        <div id="rejected-card" class="card-box mt-4 flex flex-col gap-6">
+          <div class="hidden no-cards">
+            <div
+              class="no-cards flex flex-col justify-between items-center bg-white p-6"
+            >
+              <div>
+                <img src="./assets/assignment_7959593.png" alt="" />
+              </div>
+              <h2 class="text-2xl font-bold">No jobs available</h2>
+              <p>Check back soon for new job opportunities</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
     <script src="./script/helpers.js"></script>
     <script src="./script/jobs.js"></script>
+    <script src="./script/cardCreate.js"></script>
   </body>
 </html>
