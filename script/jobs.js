@@ -1,8 +1,14 @@
 const allJobs = document.getElementById("total");
+const allInterviewJobs = document.getElementById("total-interview");
+const allRejectedJobs = document.getElementById("total-rejected");
 
 const totalJobs = document.getElementById("all-card");
+const totalInterviewJobs = document.getElementById("interview-card");
+const totalRejectedJobs = document.getElementById("rejected-card");
 
 allJobs.innerText = totalJobs.children.length;
+allInterviewJobs.innerText = totalInterviewJobs.children.length;
+allRejectedJobs.innerText = totalRejectedJobs.children.length;
 
 function handleMenu(element, id) {
   const buttons = document.querySelector(".selected-btn");

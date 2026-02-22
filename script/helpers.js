@@ -1,5 +1,5 @@
 function showOnly(id) {
-  const allJobs = document.getElementById("all-card");
+  const allJobs = document.getElementById("all-jobs");
   const interview = document.getElementById("interview-jobs");
   const rejected = document.getElementById("rejected-jobs");
 

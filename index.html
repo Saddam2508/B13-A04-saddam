@@ -62,33 +62,38 @@
         </div>
       </div>
     </section>
-    <!-- all cards -->
-    <section id="all-jobs" class="">
+    <!-- all button -->
+    <section id="all-btn" class="">
       <div class="container mx-auto">
         <h2 class="text-3xl font-bold">Available Jobs</h2>
         <div class="selected-btn mt-4 flex gap-5">
           <button
             id="all-btn"
-            onclick="handleMenu(this, 'all-card')"
+            onclick="handleMenu(this, 'all-jobs')"
             class="btn-com btn bg-blue-500 text-white"
           >
             All
           </button>
           <button
             id="interview-btn"
-            onclick="handleMenu(this, 'interview-card')"
+            onclick="handleMenu(this, 'interview-jobs')"
             class="btn-com btn"
           >
             Interview
           </button>
           <button
             id="rejected-btn"
-            onclick="handleMenu(this, 'rejected-card')"
+            onclick="handleMenu(this, 'rejected-jobs')"
             class="btn-com btn"
           >
             Rejected
           </button>
         </div>
+      </div>
+    </section>
+    <!-- all card -->
+    <section id="all-jobs" class="">
+      <div class="container mx-auto">
         <div id="all-card" class="card-box mt-4 flex flex-col gap-6">
           <div class="card flex flex-row justify-between bg-white p-6">
             <div class="left space-y-6">
@@ -327,16 +332,81 @@
     <!-- interview cards -->
     <section id="interview-jobs" class="hidden">
       <div class="container mx-auto">
-        <div
-          id="interview-card"
-          class="card-box mt-4 flex flex-col gap-6"
-        ></div>
+        <div id="interview-card" class="card-box mt-4 flex flex-col gap-6">
+          <div class="card flex flex-row justify-between bg-white p-6">
+            <div class="left space-y-6">
+              <div class="space-y-2">
+                <h2 class="text-2xl font-bold">Mobile First Corp</h2>
+                <p>React Native Developer</p>
+              </div>
+              <div>
+                <p>React Native Developer</p>
+              </div>
+              <div class="space-y-2">
+                <button class="btn">Not Applied</button>
+                <p>
+                  Build cross-platform mobile applications using React Native.
+                  Work on products used by millions of users worldwide.
+                </p>
+              </div>
+              <div class="flex gap-5">
+                <button class="btn border-2 border-green-400 text-green-400">
+                  interview
+                </button>
+                <button class="btn border-2 border-red-400 text-red-400">
+                  Rejected
+                </button>
+              </div>
+            </div>
+            <div class="right">
+              <div class="">
+                <button class="btn rounded-full p-2">
+                  <i class="fa-regular fa-trash-can"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
     <!-- rejected cards -->
     <section id="rejected-jobs" class="hidden">
       <div class="container mx-auto">
-        <div id="rejected-card" class="card-box mt-4 flex flex-col gap-6"></div>
+        <div id="rejected-card" class="card-box mt-4 flex flex-col gap-6">
+          <div class="card flex flex-row justify-between bg-white p-6">
+            <div class="left space-y-6">
+              <div class="space-y-2">
+                <h2 class="text-2xl font-bold">Mobile First Corp</h2>
+                <p>React Native Developer</p>
+              </div>
+              <div>
+                <p>React Native Developer</p>
+              </div>
+              <div class="space-y-2">
+                <button class="btn">Not Applied</button>
+                <p>
+                  Build cross-platform mobile applications using React Native.
+                  Work on products used by millions of users worldwide.
+                </p>
+              </div>
+              <div class="flex gap-5">
+                <button class="btn border-2 border-green-400 text-green-400">
+                  interview
+                </button>
+                <button class="btn border-2 border-red-400 text-red-400">
+                  Rejected
+                </button>
+              </div>
+            </div>
+            <div class="right">
+              <div class="">
+                <button class="btn rounded-full p-2">
+                  <i class="fa-regular fa-trash-can"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
     <script src="./script/helpers.js"></script>
