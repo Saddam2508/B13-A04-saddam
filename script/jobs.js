@@ -33,7 +33,7 @@ document.getElementById('all-jobs').addEventListener('click', function (e) {
       .trim()
       .toLowerCase();
 
-    if (statusBefore === 'interview') {
+    if (statusBefore === 'interview' || statusBefore === 'rejected') {
       alert('Already selected');
       return;
     } else {
@@ -62,7 +62,6 @@ document.getElementById('all-jobs').addEventListener('click', function (e) {
   }
   if (e.target.classList.contains('rejected-btn')) {
     const parentDiv = e.target.parentNode.parentNode;
-    console.log(parentDiv);
     let name = parentDiv.children[0].children[0].innerText;
     let title = parentDiv.children[0].children[1].innerText;
     let salary = parentDiv.children[1].children[0].innerText;
@@ -72,7 +71,7 @@ document.getElementById('all-jobs').addEventListener('click', function (e) {
       .trim()
       .toLowerCase();
 
-    if (statusBefore === 'rejected') {
+    if (statusBefore === 'interview' || statusBefore === 'rejected') {
       alert('Already selected');
       return;
     } else {
@@ -109,6 +108,26 @@ document
       if (!parentDiv) return;
       parentDiv.remove();
 
+      const allCardDivs = Array.from(
+        document.getElementById('all-card').children
+      );
+
+      const name = parentDiv.querySelector('h2').innerText.trim();
+      const title = parentDiv.querySelector('p').innerText.trim();
+
+      const mainCard = allCardDivs.find(
+        (card) =>
+          card.querySelector('h2').innerText === name &&
+          card.querySelector('p').innerText === title
+      );
+
+      if (mainCard) {
+        mainCard.querySelector('div:nth-child(3) button').innerText =
+          'Rejected';
+        mainCard.querySelector('div:nth-child(3) button').className =
+          'btn bg-red-400';
+      }
+
       interview = interview.filter((card) => card.statusAfter !== 'interview');
 
       const cardInfo = {
@@ -135,6 +154,26 @@ document
       const parentDiv = e.target.closest('.card');
       if (!parentDiv) return;
       parentDiv.remove();
+
+      const allCardDivs = Array.from(
+        document.getElementById('all-card').children
+      );
+
+      const name = parentDiv.querySelector('h2').innerText.trim();
+      const title = parentDiv.querySelector('p').innerText.trim();
+
+      const mainCard = allCardDivs.find(
+        (card) =>
+          card.querySelector('h2').innerText === name &&
+          card.querySelector('p').innerText === title
+      );
+
+      if (mainCard) {
+        mainCard.querySelector('div:nth-child(3) button').innerText =
+          'interview';
+        mainCard.querySelector('div:nth-child(3) button').className =
+          'btn bg-green-400';
+      }
 
       rejected = rejected.filter((card) => card.statusAfter !== 'rejected');
 
