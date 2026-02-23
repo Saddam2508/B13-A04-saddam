@@ -25,6 +25,7 @@ function handleMenu(element, id) {
 //interview btn
 
 document.getElementById("all-jobs").addEventListener("click", function (e) {
+  // interview job create
   if (e.target.classList.contains("interview-btn")) {
     const parentDiv = e.target.parentNode.parentNode;
     let name = parentDiv.children[0].children[0].innerText;
@@ -63,8 +64,9 @@ document.getElementById("all-jobs").addEventListener("click", function (e) {
     allInterviewJobs.innerText = interview.length;
     interviewCard(cardInfo);
     noInterviewAvailable();
-    noRejectedAvailable();
   }
+
+  // rejected jobs create
   if (e.target.classList.contains("rejected-btn")) {
     const parentDiv = e.target.parentNode.parentNode;
     let name = parentDiv.children[0].children[0].innerText;
@@ -102,10 +104,10 @@ document.getElementById("all-jobs").addEventListener("click", function (e) {
     rejected.push(cardInfo);
     allRejectedJobs.innerText = rejected.length;
     rejectedCard(cardInfo);
-    noInterviewAvailable();
     noRejectedAvailable();
   }
 });
+// interview jobs transfer
 
 document
   .getElementById("interview-jobs")
@@ -124,8 +126,8 @@ document
 
       const mainCard = allCardDivs.find(
         (card) =>
-          card.querySelector("h2").innerText === name &&
-          card.querySelector("p").innerText === title,
+          card.querySelector("h2").innerText.trim() === name &&
+          card.querySelector("p").innerText.trim() === title,
       );
 
       if (mainCard) {
@@ -135,7 +137,9 @@ document
           "btn bg-red-400";
       }
 
-      interview = interview.filter((card) => card.statusAfter !== "interview");
+      interview = interview.filter(
+        (card) => !(card.name.trim() === name && card.title.trim() === title),
+      );
 
       const cardInfo = {
         name: parentDiv.querySelector("h2").innerText,
@@ -148,14 +152,15 @@ document
       };
       rejected.push(cardInfo);
       rejectedCard(cardInfo);
+
       // counter update
       allInterviewJobs.innerText = interview.length;
       allRejectedJobs.innerText = rejected.length;
       noInterviewAvailable();
-      noRejectedAvailable();
     }
   });
 
+//reject jobs transfer
 document
   .getElementById("rejected-jobs")
   .addEventListener("click", function (e) {
@@ -173,8 +178,8 @@ document
 
       const mainCard = allCardDivs.find(
         (card) =>
-          card.querySelector("h2").innerText === name &&
-          card.querySelector("p").innerText === title,
+          card.querySelector("h2").innerText.trim() === name &&
+          card.querySelector("p").innerText.trim() === title,
       );
 
       if (mainCard) {
@@ -184,7 +189,9 @@ document
           "btn bg-green-400";
       }
 
-      rejected = rejected.filter((card) => card.statusAfter !== "rejected");
+      rejected = rejected.filter(
+        (card) => !(card.name.trim() === name && card.title.trim() === title),
+      );
 
       const cardInfo = {
         name: parentDiv.querySelector("h2").innerText,
@@ -199,9 +206,8 @@ document
       interview.push(cardInfo);
       interviewCard(cardInfo);
       // counter update
-      allInterviewJobs.innerText = interview.length;
       allRejectedJobs.innerText = rejected.length;
-      noInterviewAvailable();
+      allInterviewJobs.innerText = interview.length;
       noRejectedAvailable();
     }
   });
@@ -240,6 +246,7 @@ document
       (card) => !(card.name.trim() === name && card.title.trim() === title),
     );
 
+    const allInterviewJobs = document.getElementById("total-interview");
     allInterviewJobs.innerText = interview.length;
     noInterviewAvailable();
   });
