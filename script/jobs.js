@@ -9,11 +9,11 @@ const allRejectedJobs = document.getElementById('total-rejected');
 
 const totalJobs = document.getElementById('all-card');
 
-allJobs.innerText = totalJobs.children.length-1;
+allJobs.innerText = totalJobs.children.length - 1;
 
 //total job count for button right section
 const allJobsCount = document.getElementById('all-count');
-allJobsCount.innerText = `${totalJobs.children.length-1} of ${allJobs.innerText}`;
+allJobsCount.innerText = `${totalJobs.children.length - 1} of ${allJobs.innerText}`;
 
 const allInterviewJobsCount = document.getElementById('interview-count');
 allInterviewJobsCount.innerText = `${interview.length} of ${allJobs.innerText}`;
