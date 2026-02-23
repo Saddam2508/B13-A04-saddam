@@ -1,5 +1,4 @@
 function showOnly(id, countId) {
-
   const allJobs = document.getElementById('all-jobs');
   const interview = document.getElementById('interview-jobs');
   const rejected = document.getElementById('rejected-jobs');
@@ -31,9 +30,24 @@ document.getElementById('all-jobs').addEventListener('click', function (e) {
   parentDiv.remove();
   const totalJobs = document.getElementById('all-card');
   const allJobs = document.getElementById('total');
-  allJobs.innerText = totalJobs.children.length;
+  allJobs.innerText = totalJobs.children.length - 1;
+  const allJobsCount = document.getElementById('all-count');
+  allJobsCount.innerText = `${totalJobs.children.length - 1} of ${allJobs.innerText}`;
+  noAllJobsAvailable();
 });
 
+//No jobs available function
+
+function noAllJobsAvailable() {
+  const totalJobs = document.getElementById('all-card');
+  if (totalJobs.children.length - 1 === 0) {
+    const noCard = document.querySelector('.no-carded');
+    noCard.classList.remove('hidden');
+  } else {
+    const noCard = document.querySelector('.no-carded');
+    noCard.classList.add('hidden');
+  }
+}
 //No jobs available function
 
 function noInterviewAvailable() {
