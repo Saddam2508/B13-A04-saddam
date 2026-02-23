@@ -34,5 +34,5 @@ Ans: Event Delegation in JavaScript is a technique where instead of attaching ev
 
 ## What to submit:
 
-1. GitHub Repository Link:
-2. Live Site Link:
+1. GitHub Repository Link: https://github.com/Saddam2508/B13-A04-saddam
+2. Live Site Link:https://saddam2508.github.io/B13-A04-saddam
