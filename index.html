@@ -41,8 +41,12 @@
   <body class="bg-base-200">
     <section id="job-tracker" class="">
       <div class="container mx-auto pt-16">
-        <h1 class="text-4xl font-bold">Job Application Tracker</h1>
-        <div class="card-box grid grid-cols-3 gap-5 my-5">
+        <h1 class="text-3xl text-center md:text-4xl font-bold">
+          Job Application Tracker
+        </h1>
+        <div
+          class="card-box text-center md:text-left grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 gap-5 my-5"
+        >
           <div class="card bg-white p-4">
             <p>Total</p>
             <h3 id="total" class="font-bold text-2xl">0</h3>
@@ -64,10 +68,16 @@
     </section>
     <!-- all button -->
     <section id="all-btn" class="">
-      <div class="container mx-auto flex justify-between items-center">
+      <div
+        class="container mx-auto flex-col md:flex-row sm:justify-between sm:items-center "
+      >
         <div class="left-side">
-          <h2 class="text-3xl font-bold">Available Jobs</h2>
-          <div class="selected-btn mt-4 flex gap-5">
+          <h2 class="text-2xl text-center md:text-left md:text-3xl font-bold">
+            Available Jobs
+          </h2>
+          <div
+            class="selected-btn mt-4 flex gap-5 justify-center md:justify-start"
+          >
             <button
               id="all-btn"
               onclick="handleMenu(this, 'all-jobs', 'all-count')"
@@ -91,7 +101,7 @@
             </button>
           </div>
         </div>
-        <div class="right-side p-3 font-bold">
+        <div class="right-side p-3 font-bold text-center md:text-right">
           <h2 id="all-count" class="hidden">B</h2>
           <h2 id="interview-count" class="hidden">s</h2>
           <h2 id="rejected-count" class="hidden">c</h2>
