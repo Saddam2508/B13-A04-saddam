@@ -11,13 +11,13 @@ const totalJobs = document.getElementById("all-card");
 allJobs.innerText = totalJobs.children.length;
 
 // all button, all interview btn and all rejected btn
-function handleMenu(element, id) {
+function handleMenu(element, id, countId) {
   const buttons = document.querySelector(".selected-btn");
   Array.from(buttons.children).forEach((button) => {
     button.classList.remove("bg-blue-500", "text-white");
   });
   element.classList.add("bg-blue-500", "text-black");
-  showOnly(id);
+  showOnly(id, countId);
   noInterviewAvailable();
   noRejectedAvailable();
 }

@@ -34,7 +34,7 @@
     <!-- css -->
     <style>
       * {
-        font-family: "Geist", sans-serif;
+        font-family: 'Geist', sans-serif;
       }
     </style>
   </head>
@@ -64,30 +64,37 @@
     </section>
     <!-- all button -->
     <section id="all-btn" class="">
-      <div class="container mx-auto">
-        <h2 class="text-3xl font-bold">Available Jobs</h2>
-        <div class="selected-btn mt-4 flex gap-5">
-          <button
-            id="all-btn"
-            onclick="handleMenu(this, 'all-jobs')"
-            class="btn-com btn bg-blue-500 text-white"
-          >
-            All
-          </button>
-          <button
-            id="interview-btn"
-            onclick="handleMenu(this, 'interview-jobs')"
-            class="btn-com btn"
-          >
-            Interview
-          </button>
-          <button
-            id="rejected-btn"
-            onclick="handleMenu(this, 'rejected-jobs')"
-            class="btn-com btn"
-          >
-            Rejected
-          </button>
+      <div class="container mx-auto flex justify-between items-center">
+        <div class="left-side">
+          <h2 class="text-3xl font-bold">Available Jobs</h2>
+          <div class="selected-btn mt-4 flex gap-5">
+            <button
+              id="all-btn"
+              onclick="handleMenu(this, 'all-jobs', 'all-count')"
+              class="btn-com btn bg-blue-500 text-white"
+            >
+              All
+            </button>
+            <button
+              id="interview-btn"
+              onclick="handleMenu(this, 'interview-jobs', 'interview-count')"
+              class="btn-com btn"
+            >
+              Interview
+            </button>
+            <button
+              id="rejected-btn"
+              onclick="handleMenu(this, 'rejected-jobs', 'rejected-count')"
+              class="btn-com btn"
+            >
+              Rejected
+            </button>
+          </div>
+        </div>
+        <div class="right-side p-3 font-bold">
+          <h2 id="all-count" class="hidden">B</h2>
+          <h2 id="interview-count" class="hidden">s</h2>
+          <h2 id="rejected-count" class="hidden">c</h2>
         </div>
       </div>
     </section>
